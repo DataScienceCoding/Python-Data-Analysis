@@ -21,6 +21,7 @@ def numPySum(n):
 
 
 size = int(sys.argv[1])
+# size = 100000
 
 start = time.time()
 vectorSum(size)
