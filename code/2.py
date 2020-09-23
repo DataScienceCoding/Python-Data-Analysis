@@ -197,3 +197,42 @@ c.flat = [u + v for (u, v) in b]
 
 print(c, ':c\n')
 print(x + y, ':x+y\n')
+
+
+a = np.array([[1, 2], [3, 4]])
+print(a, '> a\n')
+b = np.array([[5, 6], [7, 8]])
+print(b, '> b\n')
+
+# 沿轴 0 连接两个数组
+print(np.concatenate((a, b)), '> concatenate((a, b)\n')
+# 沿轴 1 连接两个数组
+print(np.concatenate((a, b), axis=1), '> concatenate((a, b), axis=1)\n')
+
+# 沿轴 0 堆叠两个数组
+print(np.stack((a, b), 0), '> stack((a, b), 0)\n')
+# 沿轴 1 堆叠两个数组
+print(np.stack((a, b), 1), '> stack((a, b), 1)\n')
+# 水平堆叠两个数组
+print(np.hstack((a, b)), '> hstack((a, b))\n')
+# 垂直堆叠两个数组
+print(np.vstack((a, b)), '> vstack((a, b))\n')
+
+
+a = np.arange(9)
+print(a, '> a\n')
+
+# 将数组a拆分为三个大小相等的子数组
+print(np.split(a, 3), '> split(a, 3)\n')
+# 将数组按一维数组中给定的索引位置分割
+print(np.split(a, [4, 7]), '> .split(a, [4, 7])\n')
+
+a = np.floor(10 * np.random.random((2, 6)))
+print(a, '> a\n')
+
+print(np.hsplit(a, 3), '> hsplit(a, 3)\n')
+
+a = np.arange(16).reshape(4, 4)
+print(a, '> a\n')
+
+print(np.vsplit(a, 2), '> vsplit(a, 2)\n')
