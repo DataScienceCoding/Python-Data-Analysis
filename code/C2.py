@@ -41,8 +41,8 @@ x = (1, 2, 3)
 a = np.asarray(x, dtype=float)
 print(a)
 
-list = range(5)
-it = iter(list)
+ls = range(5)
+it = iter(ls)
 x = np.fromiter(it, dtype=float)
 print(x)
 
