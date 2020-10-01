@@ -1,18 +1,33 @@
 
 import pandas as pd
+import numpy as np
+
+df = pd.DataFrame(np.random.randn(5, 3),
+                  index=['a', 'c', 'e', 'f',
+                         'h'],
+                  columns=['one', 'two', 'three'])
+
+df = df.reindex(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
+
+print(df, '> df\n')
+
+print(df['one'].isnull(), "> df['one'].isnull()\n")
+print(df['one'].notnull(), "> df['one'].notnull()\n")
+
+# 直接删除法
+print(df.dropna(), "> df.dropna\n")
+
+# 标量填充法
+print(df.fillna(0), "> df.fillna(0)\n")
+
+# 相邻前后行填充法
+print(df.fillna(method='pad'), "> df.fillna(method='pad')\n")
+print(df.fillna(method='backfill'), "> df.fillna(method='backfill')\n")
+
+# 通用替换法
+df = pd.DataFrame({'one': [10, 20, 30, 40, 50, 2000],
+                   'two': [1000, 0, 30, 40, 50, 60]})
+print(df.replace({1000: 10, 2000: 60}))
 
 
-print('通过字符串创建时间差')
-print(pd.Timedelta('2 days 2 hours 15 minutes 30 seconds'), '\n')
 
-print('通过整数创建时间差')
-print(pd.Timedelta(6, unit='h'), '\n')
-print(pd.Timedelta(days=2), '\n')
-
-print('相加操作')
-s = pd.Series(pd.date_range('2018-1-1', periods=3, freq='D'))
-td = pd.Series([pd.Timedelta(days=i) for i in range(3)])
-df = pd.DataFrame(dict(A=s, B=td))
-df['C'] = df['A'] + df['B']
-df['D'] = df['C'] - df['B']
-print(df, '\n')
