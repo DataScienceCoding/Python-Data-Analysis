@@ -1,43 +1,56 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import numpy.ma as ma
 
-salary = np.loadtxt("code/MLB2008.csv", delimiter=',',
-                    usecols=(1,), skiprows=1, unpack=True)
+data = np.random.rand(25 * 25).reshape(25, -1)
+mask = np.tri(data.shape[0], k=-1)
+data_masked = ma.array(data, mask=mask)
+fig, (ax1, ax2) = plt.subplots(1, 2)
+ax1.imshow(data)
+ax2.imshow(data_masked)
+plt.show()
 
-# 创建一个数组，存放可以被3整除的数组
-triples = np.arange(0, len(salary), 3)
-print("Triples", triples[:10], "...")
-# 生成一个元素值全为1且大小与薪金数据数组相等的数组
-signs = np.ones(len(salary))
-print("Signs", signs[:10], "...")
-# 下标是3的倍数的数组元素的值取反
-signs[triples] = -1
-print("Signs", signs[:10], "...")
-# 对数组取对数
-ma_log = np.ma.log(salary * signs)
-# 打印相应的薪金数据
-print("Masked logs", ma_log[:10], "...")
-# 此处规定：所谓异常值，就是在平均值一个标准差以下或者在平均值一个标准差以上的那些数值
-dev = salary.std()
-avg = salary.mean()
-inside = np.ma.masked_outside(salary, avg - dev, avg + dev)
-print("Inside", inside[:10], "...")
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# salary = np.loadtxt("code/MLB2008.csv", delimiter=',',
+#                     usecols=(1,), skiprows=1, unpack=True)
+
+# # 创建一个数组，存放可以被3整除的数组
+# triples = np.arange(0, len(salary), 3)
+# print("Triples", triples[:10], "...")
+# # 生成一个元素值全为1且大小与薪金数据数组相等的数组
+# signs = np.ones(len(salary))
+# print("Signs", signs[:10], "...")
+# # 下标是3的倍数的数组元素的值取反
+# signs[triples] = -1
+# print("Signs", signs[:10], "...")
+# # 对数组取对数
+# ma_log = np.ma.log(salary * signs)
+# # 打印相应的薪金数据
+# print("Masked logs", ma_log[:10], "...")
+# # 此处规定：所谓异常值，就是在平均值一个标准差以下或者在平均值一个标准差以上的那些数值
+# dev = salary.std()
+# avg = salary.mean()
+# inside = np.ma.masked_outside(salary, avg - dev, avg + dev)
+# print("Inside", inside[:10], "...")
 
 # 分别绘制原始薪金数据、取对数后的数据和取幂复原后的数据以及应用基于标准差的掩码之后的数据
-plt.subplot(311)
-plt.title("Original")
-plt.plot(salary)
+# plt.subplot(311)
+# plt.title("Original")
+# plt.plot(salary)
 
-plt.subplot(312)
-plt.title("Log Masked")
-plt.plot(np.exp(ma_log))
+# plt.subplot(312)
+# plt.title("Log Masked")
+# plt.plot(np.exp(ma_log))
 
-plt.subplot(313)
-plt.title("Not Extreme")
-plt.plot(inside)
+# plt.subplot(313)
+# plt.title("Not Extreme")
+# plt.plot(inside)
 
-plt.subplots_adjust(hspace=.9)
-plt.show()
+# plt.subplots_adjust(hspace=.9)
+# plt.show()
 
 
 # import numpy
