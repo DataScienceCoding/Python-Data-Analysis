@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta name="description" content="python数据分析个人学习读书笔记-目录索引 第4章统计学与线性代数 统计学和线性代数为探索性数据分析奠定了基础。无论是描述性还是推论性的统计方法，都有助于从原始数据中获得见解和进行推断。比如，通过" />
+    <meta property="og:description" content="python数据分析个人学习读书笔记-目录索引 第4章统计学与线性代数 统计学和线性代数为探索性数据分析奠定了基础。无论是描述性还是推论性的统计方法，都有助于从原始数据中获得见解和进行推断。比如，通过" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>《python数据分析（第2版）-阿曼多.凡丹戈》读书笔记第4章-统计学与线性代数 - 邀月 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=jzhy9Oyg5XODXo8F4hsEOQFzKCPYRKZCYc011rNEfQo" />
+    <link id="MainCss" rel="stylesheet" href="/skins/lessismore/bundle-lessismore.min.css?v=cSdTZ4vtZYzf2SzHCuZl1uPbQayvHZ2P0lNlDsBMVys" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/lessismore/bundle-lessismore-mobile.min.css?v=arJ4BmwdBcUZrSduKjIvQKPiliQ99OBUW7yasPqJtdY" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/downmoon/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/downmoon/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/downmoon/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 22045;
+        var currentBlogApp = 'downmoon';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'LessIsMore';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2020-04-04 06:47';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=fLUEwRea4WeqlJe_CLnNunLQZl_ViJFLgKpcNDuKptI"></script>
+    
+    
+    
+</head>
+<body>
+    <a name="top"></a>
+    <div id="top_nav" class="navbar">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding">
+                    <a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a>
+                </li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=oS4PkibyMjZ9rGD5XAcLt99uW_s76Javy2up4dbnZNY" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" onclick="logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signin/?returnUrl=https://www.cnblogs.com/">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/downmoon/">邀月工作室</a>
+</div>
+<div class="subtitle">
+年轻的时候，多走走，走不动的时候，静下来写回忆录。<br/>3w@live.cn
+</div>
+
+        </div>
+        <div id="navigator">
+            
+<ul id="navList">
+    <li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+    <li id="nav_myhome">
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/downmoon/">
+首页</a>
+</li>
+    <li id="nav_newpost">
+
+
+</li>
+    <li id="nav_contact">
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E9%82%80%E6%9C%88">
+联系</a></li>
+    <li id="nav_rss">
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/downmoon/rss/">
+订阅</a></li>
+    <li id="nav_admin">
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+            <div class="blogStats">
+                
+<span id="stats_post_count">随笔 - 
+544&nbsp;</span>
+<span id="stats_article_count">文章 - 
+1&nbsp;</span>
+<!-- <span id="stats-comment_count"></span> -->
+<span id="stats_comment_count">评论 - 
+2674</span>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                <div id="post_detail">
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/downmoon/p/12632739.html">
+    <span>《python数据分析（第2版）-阿曼多.凡丹戈》读书笔记第4章-统计学与线性代数</span>
+    
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                
+    <div id="cnblogs_post_description" style="display: none">
+        <img src="https://images.cnblogs.com/cnblogs_com/downmoon/1683115/o_200330053700cover03.jpg" class="desc_img" width="74" height="92">阿曼多·凡丹戈（Armando Fandango）的《python数据分析（第2版）》，2018年6月出版，本系列为读书笔记。主要是为了系统整理，加深记忆。第4章“统计学与线性代数”对线性代数和统计函数做了简要回顾。
+    </div>
+<div id="cnblogs_post_body" class="blogpost-body">
+    <p><a class="postTitle2" href="https://www.cnblogs.com/downmoon/p/12448602.html">python数据分析个人学习读书笔记-目录索引 </a></p>
+<p><strong>第4章统计学与线性代数</strong></p>
+<p>　　统计学和线性代数为探索性数据分析奠定了基础。无论是描述性还是推论性的统计方法，都有助于从原始数据中获得见解和进行推断。比如，通过数据求出变量的算术平均值和标准差，并由此推出该变量的取值范围和期望值后，我们就可以利用统计检验来评估所得结论的可信度了。</p>
+<p>　　线性代数关注的是解线性方程组，而NumPy和SciPy的linalg程序包可以帮我们轻松地解决这个问题。线性代数用途广泛，如利用模型拟合数据时就离不开它。除此之外，本章还会介绍其他几种NumPy和SciPy程序包，内容涉及随机数的生成和掩码式数组（Masked arrays）。</p>
+<p>　　本章涉及以下主题。</p>
+<ul>
+<li>利用NumPy处理简单的描述性统计运算</li>
+<li>利用NumPy进行线性代数运算</li>
+<li>利用NumPy寻找特征值和特征向量</li>
+<li>NumPy随机数</li>
+<li>创建NumPy掩码式数组（Masked arrays）</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>4.1用NumPy进行简单的描述性统计计算</strong></p>
+<p>&nbsp;　　在本书中，我们会尽量使用各种不同的可以通过公开渠道获得的数据集。但是，这些数据的主题未必正是读者的兴趣之所在。此外，虽然每个数据集都有其自身的特点，但是本书介绍的技巧却是通用的，所以同样适用于大家的领域。在本章中，我们将数据集从statsmodels库载入NumPy数组，来进行数据分析。</p>
+<p>　　Mauna Loa CO2测量数据是我们用到的statsmodels库的第一个数据集。以下代码将会加载数据集并给出基本的描述性统计值。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">from</span> scipy.stats <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> scoreatpercentile
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> pandas as pd
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 5</span> data = pd.read_csv(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">co2.csv</span><span style="color: rgba(128, 0, 0, 1)">"</span>, index_col=0, parse_dates=<span style="color: rgba(0, 0, 0, 1)">True)
+</span><span style="color: rgba(0, 128, 128, 1)"> 6</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 7</span> co2 =<span style="color: rgba(0, 0, 0, 1)"> np.array(data.co2)
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 9</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">The statistical valus for amounts of co2 in atmosphere : \n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Max method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.max())
+</span><span style="color: rgba(0, 128, 128, 1)">11</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Max function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.max(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">12</span> 
+<span style="color: rgba(0, 128, 128, 1)">13</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Min method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.min())
+</span><span style="color: rgba(0, 128, 128, 1)">14</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Min function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.min(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">15</span> 
+<span style="color: rgba(0, 128, 128, 1)">16</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Mean method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.mean())
+</span><span style="color: rgba(0, 128, 128, 1)">17</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Mean function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.mean(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">18</span> 
+<span style="color: rgba(0, 128, 128, 1)">19</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Std method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.std())
+</span><span style="color: rgba(0, 128, 128, 1)">20</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Std function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.std(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">21</span> 
+<span style="color: rgba(0, 128, 128, 1)">22</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Median : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.median(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">23</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Score at percentile 50 : </span><span style="color: rgba(128, 0, 0, 1)">"</span>, scoreatpercentile(co2, 50))</pre>
+</div>
+<p>　　上面的代码会计算NumPy数组的平均值、中位数、最大值、最小值以及标准差。</p>
+<p>　　<strong>Tips:</strong>如果这些术语听起来不太熟悉，不妨花些时间到维基百科或其他地方了解一下相关内容。前言部分讲过，本书假设读者熟悉基本的数学和统计概念。</p>
+<p>　　这里使用的数据来自statsmodels包，这些都是美国夏威夷Mauna Loa天文台观测到的大气CO2的值。</p>
+<p>　　现在，我们来看看具体代码。</p>
+<p>　　（1）&nbsp;&nbsp;&nbsp;&nbsp; 首先，使用import语句来加载Python包的相关模块，具体如下。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">from</span> scipy.stats <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> scoreatpercentile
+</span><span style="color: rgba(0, 128, 128, 1)">3</span> <span style="color: rgba(0, 0, 255, 1)">import</span> pandas as pd</pre>
+</div>
+<p>　　（2）然后，调用下面的函数来加载数据。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> data = pd.read_csv(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">co2.csv</span><span style="color: rgba(128, 0, 0, 1)">"</span>, index_col=0, parse_dates=<span style="color: rgba(0, 0, 0, 1)">True)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> 
+<span style="color: rgba(0, 128, 128, 1)">3</span> co2 = np.array(data.co2)</pre>
+</div>
+<p>　　上述代码中的数据将被复制到NumPy数组co2中，该数组用来存放大气中CO2的观测值。</p>
+<p>　　（3）数组的最大值可以通过ndarray的方法或者其他的NumPy函数来获得，另外最小值、平均值和标准差同样如此。下列代码将会显示各种统计指标。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">The statistical valus for amounts of co2 in atmosphere : \n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Max method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.max())
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Max function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.max(co2))
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 5</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Min method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.min())
+</span><span style="color: rgba(0, 128, 128, 1)"> 6</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Min function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.min(co2))
+</span><span style="color: rgba(0, 128, 128, 1)"> 7</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 8</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Mean method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.mean())
+</span><span style="color: rgba(0, 128, 128, 1)"> 9</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Mean function : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.mean(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> 
+<span style="color: rgba(0, 128, 128, 1)">11</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Std method : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, co2.std())
+</span><span style="color: rgba(0, 128, 128, 1)">12</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Std function : </span><span style="color: rgba(128, 0, 0, 1)">"</span>, np.std(co2))</pre>
+</div>
+<p>　　输出内容如下。</p>
+<div class="cnblogs_code">
+<pre>Max method :  366.84<span style="color: rgba(0, 0, 0, 1)">
+Max function :  </span>366.84<span style="color: rgba(0, 0, 0, 1)">
+Min method :  </span>313.18<span style="color: rgba(0, 0, 0, 1)">
+Min function :  </span>313.18<span style="color: rgba(0, 0, 0, 1)">
+Mean method :  </span>337.0535256410256<span style="color: rgba(0, 0, 0, 1)">
+Mean function :  </span>337.0535256410256<span style="color: rgba(0, 0, 0, 1)">
+Std method :  </span>14.950221626197369<span style="color: rgba(0, 0, 0, 1)">
+Std function :  </span>14.950221626197369</pre>
+</div>
+<p>　　（4）中位数（median）可以用NumPy或者SciPy的函数得到。下列代码将计算数据第50百分位数。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Median : </span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.median(co2))
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Score at percentile 50 : </span><span style="color: rgba(128, 0, 0, 1)">"</span>, scoreatpercentile(co2, 50))</pre>
+</div>
+<p>　　以下是输出内容。</p>
+<div class="cnblogs_code">
+<pre>Median :  335.17<span style="color: rgba(0, 0, 0, 1)">
+Score at percentile </span>50 :  335.17</pre>
+</div>
+<p>&nbsp;</p>
+<p><strong>4.2用NumPy进行线性代数运算</strong></p>
+<p>&nbsp;　　线性代数是数学的一个重要分支，比如，我们可以使用线性代数来解决线性回归问题。子程序包numpy.linalg提供了许多线性代数例程，我们可以用它来计算矩阵的逆或特征值，求解线性方程或计算行列式等。对于NumPy来说，矩阵可以用ndarray的一个子类来表示。</p>
+<p><strong>4.2.1　用NumPy求矩阵的逆</strong></p>
+<p>&nbsp;　　在线性代数中，假设A是一个方阵或可逆矩阵，如果存在一个矩阵A-1，满足矩阵A-1与原矩阵A相乘后等于单位矩阵I这一条件，那么就称矩阵A-1是A的逆，相应的数学方程如下。</p>
+<p>　　<strong>A A<sup>-1</sup> = I</strong></p>
+<p>　　子程序包numpy.linalg中的inv()函数就是用来求矩阵的逆的。下面通过一个例子进行说明，具体步骤如下。</p>
+<p>　　（1）利用mat()函数创建一个示例矩阵。</p>
+<div class="cnblogs_code">
+<pre>A = np.mat(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">2 4 6;4 2 6;10 -4 18</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, A)</pre>
+</div>
+<p>　　矩阵A的内容如下。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">A
+ [[ </span>2  4  6<span style="color: rgba(0, 0, 0, 1)">]
+ [ </span>4  2  6<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>10 -4 18]]</pre>
+</div>
+<p>　　（2）求矩阵的逆。现在可以利用<strong>inv()子例程</strong>来计算逆矩阵了。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> inverse =<span style="color: rgba(0, 0, 0, 1)"> np.linalg.<span style="color: rgba(255, 0, 0, 1)"><strong>inv</strong></span>(A)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">inverse of A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, inverse)</pre>
+</div>
+<p>　　逆矩阵显示如下。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">inverse of A
+ [[</span>-0.41666667  0.66666667 -0.08333333<span style="color: rgba(0, 0, 0, 1)">]
+ [ </span>0.08333333  0.16666667 -0.08333333<span style="color: rgba(0, 0, 0, 1)">]
+ [ </span>0.25       -0.33333333  0.08333333]]</pre>
+</div>
+<p>　　Tips：如果该矩阵是<strong>奇异的，或者非方阵</strong>，那么我们就会得到<strong>LinAlgError消息</strong>。如果愿意，我们也可以通过手动来验证这个计算结果。NumPy库中的<strong>pinv()函数</strong>可以用来求伪逆矩阵，它适用于<strong>任意矩阵，包括非方阵</strong>。</p>
+<p>　　（3）利用乘法进行验算。</p>
+<p>　　下面我们将inv()函数的计算结果乘以原矩阵，验算结果是否正确。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Check\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, A * inverse)</pre>
+</div>
+<p>　　不出我们所料，果然得到了一个单位矩阵（当然，前提是一些小误差忽略不计）。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">Check
+ [[ </span>1.00000000e+00  1.11022302e-16 -2.77555756e-17<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>-2.22044605e-16  1.00000000e+00 -2.77555756e-17<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>-8.88178420e-16  1.22124533e-15  1.00000000e+00]]</pre>
+</div>
+<p>　　我们将上面的计算结果减去3×3的单位矩阵，会得到求逆过程中出现的误差。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Error\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, A * inverse - np.eye(3))</pre>
+</div>
+<p>　　一般来说，这些误差通常忽略不计，但是在某些情况下，细微的误差也可能导致不良后果。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">Error
+ [[</span>-1.11022302e-16  1.11022302e-16 -2.77555756e-17<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>-2.22044605e-16  4.44089210e-16 -2.77555756e-17<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>-8.88178420e-16  1.22124533e-15 -2.22044605e-16]]</pre>
+</div>
+<p>　　这种情况下，我们需要使用精度更高的数据类型，或者更高级的算法。前面我们使用了numpy.linalg子程序包的inv()例程来计算矩阵的逆。下面，我们用矩阵乘法来验证这个逆矩阵是否符合我们的要求。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> A = np.mat(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">2 4 6;4 2 6;10 -4 18</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">3</span> <span style="color: rgba(0, 0, 255, 1)">print</span> <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, A
+</span><span style="color: rgba(0, 128, 128, 1)">4</span> 
+<span style="color: rgba(0, 128, 128, 1)">5</span> inverse =<span style="color: rgba(0, 0, 0, 1)"> np.linalg.inv(A)
+</span><span style="color: rgba(0, 128, 128, 1)">6</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">inverse of A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, inverse)
+</span><span style="color: rgba(0, 128, 128, 1)">7</span> 
+<span style="color: rgba(0, 128, 128, 1)">8</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Check\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, A *<span style="color: rgba(0, 0, 0, 1)"> inverse)
+</span><span style="color: rgba(0, 128, 128, 1)">9</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Error\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, A * inverse - np.eye(3))</pre>
+</div>
+<p>&nbsp;</p>
+<p><strong>4.2.2　用NumPy解线性方程组</strong></p>
+<p>&nbsp;　　矩阵可以通过线性方式把一个向量变换成另一个向量，因此从数值计算的角度看，这种操作对应于一个线性方程组。Numpy.linalg中的solve()子例程可以求解类似Ax = b这种形式的线性方程组，其中A是一个矩阵，b是一维或者二维数组，而x是未知量。下面我们介绍如何使用dot()函数来计算两个浮点型数组的点积（dot product）。</p>
+<p>　　这里举例说明解线性方程组的过程，具体步骤如下。</p>
+<p>　　（1）首先创建矩阵A和数组b。</p>
+<p>　　用于创建矩阵A和数组b代码如下。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> A = np.mat(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">1 -2 1;0 2 -8;-4 5 9</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, A)
+</span><span style="color: rgba(0, 128, 128, 1)">3</span> 
+<span style="color: rgba(0, 128, 128, 1)">4</span> b = np.array([0, 8, -9<span style="color: rgba(0, 0, 0, 1)">])
+</span><span style="color: rgba(0, 128, 128, 1)">5</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">b\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, b)</pre>
+</div>
+<p>　　矩阵A和数组（向量）b的定义如下所示。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">A
+ [[ </span>1 -2  1<span style="color: rgba(0, 0, 0, 1)">]
+ [ 0  </span>2 -8<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>-4  5  9<span style="color: rgba(0, 0, 0, 1)">]]
+b
+ [ 0  </span>8 -9]</pre>
+</div>
+<p>　　（2）调用solve()函数。</p>
+<p>　　（3）接下来，用solve()函数来解这个线性方程组。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> x =<span style="color: rgba(0, 0, 0, 1)"> np.linalg.solve(A, b)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Solution</span><span style="color: rgba(128, 0, 0, 1)">"</span>, x)</pre>
+</div>
+<p>　　线性方程组的解如下。</p>
+<div class="cnblogs_code">
+<pre>Solution [29. 16.  3.]</pre>
+</div>
+<p>　　（4）我们利用dot()函数进行验算。</p>
+<p>　　我们利用dot()函数验算这个解是否正确。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Check\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, np.dot(A , x))</pre>
+</div>
+<p>　　结果不出所料。</p>
+<div class="cnblogs_code">
+<pre>Check[[ 0. 8. -9.]]</pre>
+</div>
+<p>　　前面，我们通过NumPy的linalg子程序包中的solve()函数求出了线性方程组的解，而且利用dot()函数验算了结果，下面我们把这些代码放到一起。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 3</span> A = np.mat(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">1 -2 1;0 2 -8;-4 5 9</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, A)
+</span><span style="color: rgba(0, 128, 128, 1)"> 5</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 6</span> b = np.array([0, 8, -9<span style="color: rgba(0, 0, 0, 1)">])
+</span><span style="color: rgba(0, 128, 128, 1)"> 7</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">b\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, b)
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 9</span> x =<span style="color: rgba(0, 0, 0, 1)"> np.linalg.solve(A, b)
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Solution</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, x)
+</span><span style="color: rgba(0, 128, 128, 1)">11</span> 
+<span style="color: rgba(0, 128, 128, 1)">12</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Check\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.dot(A , x))
+</span><span style="color: rgba(0, 128, 128, 1)">13</span> 
+<span style="color: rgba(0, 128, 128, 1)">14</span>  </pre>
+</div>
+<p>&nbsp;</p>
+<p><strong>4.3用NumPy计算特征值和特征向量</strong></p>
+<p>&nbsp;　　特征值是方程式Ax=ax的标量解（scalar solutions），其中A是一个二维矩阵，而x是一维向量。特征向量实际上就是表示特征值的向量。</p>
+<p>　　<span style="color: rgba(255, 0, 0, 1)"><strong>Tips</strong></span>：<strong>特征值和特征向量都是基本的数学概念并且常用于一些重要的算法中，如主成分分析（PCA）算法。PCA可以极大地简化大规模数据集的分析过程。</strong></p>
+<p>　　计算特征值时，我们可以求助于numpy.linalg程序包提供的<span style="color: rgba(255, 0, 0, 1)"><strong>eigvals()子例程</strong></span>。函数eig()的返回值是一个元组，其元素为特征值和特征向量。</p>
+<p>　　我们可以用子程序包numpy.linalg的eigvals()和eig()函数来获得矩阵的特征值和特征向量，同时通过dot()函数来验算结果。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> A = np.mat(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">3 -2;1 0</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, A)
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 5</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Eigenvalues</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.linalg.eigvals(A))
+</span><span style="color: rgba(0, 128, 128, 1)"> 6</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 7</span> eigenvalues, eigenvectors =<span style="color: rgba(0, 0, 0, 1)"> np.linalg.eig(A)
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">First tuple of eig</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, eigenvalues)
+</span><span style="color: rgba(0, 128, 128, 1)"> 9</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Second tuple of eig\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, eigenvectors)
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> 
+<span style="color: rgba(0, 128, 128, 1)">11</span> <span style="color: rgba(0, 0, 255, 1)">for</span> i <span style="color: rgba(0, 0, 255, 1)">in</span><span style="color: rgba(0, 0, 0, 1)"> range(len(eigenvalues)):
+</span><span style="color: rgba(0, 128, 128, 1)">12</span>    <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Left</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.dot(A, eigenvectors[:,i]))
+</span><span style="color: rgba(0, 128, 128, 1)">13</span>    <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Right</span><span style="color: rgba(128, 0, 0, 1)">"</span>, eigenvalues[i] * eigenvectors[:,i])</pre>
+</div>
+<p>　　下面来计算一个矩阵的特征值。</p>
+<p>　　（1）我们创建矩阵。</p>
+<p>　　（2）下列代码将创建一个矩阵。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> A = np.mat(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">3 -2;1 0</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">A\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, A)</pre>
+</div>
+<p>　　下面的矩阵即刚才创建的矩阵。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 0, 0, 1)">A
+ [[ </span>3 -2<span style="color: rgba(0, 0, 0, 1)">]
+ [ </span>1  0]]</pre>
+</div>
+<p>　　（2）利用eig()函数计算特征值。</p>
+<p>　　这时，我们可以使用eig()子例程。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> Print(“Eigenvalues”, np.linalg.eigvals(A))</pre>
+</div>
+<p>　　该矩阵的特征值如下。</p>
+<div class="cnblogs_code">
+<pre>Eigenvalues [2. 1.]</pre>
+</div>
+<p>　　（3）利用eig()函数取得特征值和特征向量。</p>
+<p>　　利用eig()函数，可以得到特征值和特征向量。注意，该函数返回的是一个元组，它的第1个元素是特征值，第2个元素为相应的eigenvectors，以面向列的方式排列。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> eigenvalues, eigenvectors =<span style="color: rgba(0, 0, 0, 1)"> np.linalg.eig(A)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">First tuple of eig</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, eigenvalues)
+</span><span style="color: rgba(0, 128, 128, 1)">3</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Second tuple of eig\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>, eigenvectors)</pre>
+</div>
+<p>　　特征值eigenvalues和特征向量eigenvectors的值分别如下。</p>
+<div class="cnblogs_code">
+<pre>First tuple of eig [2. 1<span style="color: rgba(0, 0, 0, 1)">.]
+Second tuple of eig
+ [[</span>0.89442719 0.70710678<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>0.4472136  0.70710678]]</pre>
+</div>
+<p>　　（4）验算结果。</p>
+<p>　　通过dot()函数计算特征值方程式Ax = ax两边的值，我们就可以对结果进行验算。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">for</span> i <span style="color: rgba(0, 0, 255, 1)">in</span><span style="color: rgba(0, 0, 0, 1)"> range(len(eigenvalues)):
+</span><span style="color: rgba(0, 128, 128, 1)">2</span>    <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Left</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, np.dot(A, eigenvectors[:,i]))
+</span><span style="color: rgba(0, 128, 128, 1)">3</span>    <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Right</span><span style="color: rgba(128, 0, 0, 1)">"</span>, eigenvalues[i] * eigenvectors[:,i])</pre>
+</div>
+<p>　　输出内容如下。</p>
+<div class="cnblogs_code">
+<pre>Left [[1.78885438<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>0.89442719<span style="color: rgba(0, 0, 0, 1)">]]
+Right [[</span>1.78885438<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>0.89442719<span style="color: rgba(0, 0, 0, 1)">]]
+Left [[</span>0.70710678<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>0.70710678<span style="color: rgba(0, 0, 0, 1)">]]
+Right [[</span>0.70710678<span style="color: rgba(0, 0, 0, 1)">]
+ [</span>0.70710678]]</pre>
+</div>
+<p>&nbsp;</p>
+<p><strong>4.4NumPy随机数</strong></p>
+<p>&nbsp;　　随机数常用于蒙特卡罗法、随机积分等方面。然而，真正的随机数很难获得，实际中使用的都是伪随机数。大部分情况下，伪随机数就足以满足我们的需求。当然，某些特殊情况除外，例如进行高精度的模拟实验时。对于NumPy，与随机数有关的函数都在random子程序包中。</p>
+<p>　　<strong>提示:NumPy核心的随机数发生器是基于梅森旋转算法的。</strong></p>
+<p>　　我们既可以生成连续分布的随机数，也可以生成非连续分布的随机数。分布函数有一个可选的size参数，它能通知NumPy要创建多少个数字。我们可以用整型或者元组来给这个参数赋值，这时会得到相应形状的数组，其值由随机数填充。离散分布包括几何分布、超几何分布和二项式分布。连续分布包括正态分布和对数正态分布。</p>
+<p><strong>4.4.1　用二项式分布进行博弈</strong></p>
+<p>&nbsp;　　二项式分布模拟的是在进行整数次独立实验中成功的次数，其中每次实验的成功机会是一定的。</p>
+<p>　　假设我们身在17世纪，正在对8片币玩法下注。当时流行用9枚硬币来玩。如果人头朝上的硬币少于5枚，那么我们将输掉一个8分币；否则，我们就赢一个8分币。下面，我们开始模拟这个游戏，假设我们手上有1000硬币作为初始备资。我们将使用random模块提供的binomial()函数进行模拟。</p>
+<p><strong>　Tips：完</strong>整的代码详见本书代码包中的ch-04.ipynb文件。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">from</span> matplotlib.pyplot <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> plot, show
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 4</span> cash = np.zeros(10000<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)"> 5</span> cash[0] = 1000
+<span style="color: rgba(0, 128, 128, 1)"> 6</span> outcome = np.random.binomial(9, 0.5, size=<span style="color: rgba(0, 0, 0, 1)">len(cash))
+</span><span style="color: rgba(0, 128, 128, 1)"> 7</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 8</span> <span style="color: rgba(0, 0, 255, 1)">for</span> i <span style="color: rgba(0, 0, 255, 1)">in</span> range(1<span style="color: rgba(0, 0, 0, 1)">, len(cash)):
+</span><span style="color: rgba(0, 128, 128, 1)"> 9</span> 
+<span style="color: rgba(0, 128, 128, 1)">10</span>    <span style="color: rgba(0, 0, 255, 1)">if</span> outcome[i] &lt; 5<span style="color: rgba(0, 0, 0, 1)">:
+</span><span style="color: rgba(0, 128, 128, 1)">11</span>       cash[i] = cash[i - 1] - 1
+<span style="color: rgba(0, 128, 128, 1)">12</span>    <span style="color: rgba(0, 0, 255, 1)">elif</span> outcome[i] &lt; 10<span style="color: rgba(0, 0, 0, 1)">:
+</span><span style="color: rgba(0, 128, 128, 1)">13</span>       cash[i] = cash[i - 1] + 1
+<span style="color: rgba(0, 128, 128, 1)">14</span>    <span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)">:
+</span><span style="color: rgba(0, 128, 128, 1)">15</span>       <span style="color: rgba(0, 0, 255, 1)">raise</span> AssertionError(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Unexpected outcome </span><span style="color: rgba(128, 0, 0, 1)">"</span> +<span style="color: rgba(0, 0, 0, 1)"> outcome)
+</span><span style="color: rgba(0, 128, 128, 1)">16</span> 
+<span style="color: rgba(0, 128, 128, 1)">17</span> <span style="color: rgba(0, 0, 255, 1)">print</span><span style="color: rgba(0, 0, 0, 1)">(outcome.min(), outcome.max())
+</span><span style="color: rgba(0, 128, 128, 1)">18</span> 
+<span style="color: rgba(0, 128, 128, 1)">19</span> <span style="color: rgba(0, 0, 0, 1)">plot(np.arange(len(cash)), cash)
+</span><span style="color: rgba(0, 128, 128, 1)">20</span> show()</pre>
+</div>
+<p>　　如果要了解binomial()函数，请看以下步骤。</p>
+<p>　　（1）我们用binomial()函数。</p>
+<p>　　我们将数组初始化为零，即现金余额为零。调用binomial()函数，将size参数设为10 000，这就表示我们要掷10 000次硬币。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> cash = np.zeros(10000<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> cash[0] = 1000
+<span style="color: rgba(0, 128, 128, 1)">3</span> outcome = np.random.binomial(9, 0.5, size=len(cash))</pre>
+</div>
+<p>　　（2）更新现金余额。</p>
+<p>　　我们利用抛郑硬币的结果来更新cash数组，显示outcome数组中的最大值和最小值，只要保证没有罕见的异常值即可。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">for</span> i <span style="color: rgba(0, 0, 255, 1)">in</span> range(1<span style="color: rgba(0, 0, 0, 1)">, len(cash)):
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 3</span>    <span style="color: rgba(0, 0, 255, 1)">if</span> outcome[i] &lt; 5<span style="color: rgba(0, 0, 0, 1)">:
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span>       cash[i] = cash[i - 1] - 1
+<span style="color: rgba(0, 128, 128, 1)"> 5</span>    <span style="color: rgba(0, 0, 255, 1)">elif</span> outcome[i] &lt; 10<span style="color: rgba(0, 0, 0, 1)">:
+</span><span style="color: rgba(0, 128, 128, 1)"> 6</span>       cash[i] = cash[i - 1] + 1
+<span style="color: rgba(0, 128, 128, 1)"> 7</span>    <span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)">:
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span>       <span style="color: rgba(0, 0, 255, 1)">raise</span> AssertionError(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Unexpected outcome </span><span style="color: rgba(128, 0, 0, 1)">"</span> +<span style="color: rgba(0, 0, 0, 1)"> outcome)
+</span><span style="color: rgba(0, 128, 128, 1)"> 9</span> 
+<span style="color: rgba(0, 128, 128, 1)">10</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(outcome.min(), outcome.max())</pre>
+</div>
+<p>不出所料，值为0～9。</p>
+<div class="cnblogs_code">
+<pre>0 9</pre>
+</div>
+<p>　　（3）用matplotlib绘出cash数组的图像。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 0, 1)">Plot(np.arange(len(cash)), cash)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> Show()</pre>
+</div>
+<p>　　从图４-2可以看出，现金余额的曲线类似于随机行走（即不按照固定模式，而是随机游走）。</p>
+<p>&nbsp;<img title="pythondata2_04_01.png" src="https://images.cnblogs.com/cnblogs_com/downmoon/1683115/o_200404101328pythondata2_04_01.png" alt="邀月工作室" width="396" height="259"></p>
+<p>　　当然，我们每一次执行程序代码，都会得到一个不同的随机游走。如果想总是得到相同的结果，需要给NumPy的随机数子程序包中的binomial()函数一个种子值。</p>
+<p><strong>4.4.2　正态分布采样</strong></p>
+<p>&nbsp;　　连续分布是通过概率密度函数（PDF）进行建模的。在特定区间发生某事件的可能性可以通过概率密度函数的积分运算求出。NumPy的random模块提供了许多表示连续分布的函数，如beta、chisquare、exponential、f、gamma、gumbel、laplace、lognormal、logistic、multivariate_normal、noncentral_chisquare、noncentral_f、normal等。</p>
+<p>　　利用NumPy的random子程序包中的normal()函数，可以把正态分布以直观的形式图示出来。下面给出随机产生的数值的钟形曲线和条形图。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> matplotlib.pyplot as plt
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 4</span> N=10000
+<span style="color: rgba(0, 128, 128, 1)"> 5</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 6</span> normal_values = np.random.normal(size=<span style="color: rgba(0, 0, 0, 1)">N)
+</span><span style="color: rgba(0, 128, 128, 1)"> 7</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">dummy, bins, dummy = plt.hist(normal_values, int(np.sqrt(N)), normed =True, lw=1)</span>
+<span style="color: rgba(0, 128, 128, 1)"> 8</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">normed：布尔值。官方不推荐使用，建议改用density参数。</span>
+<span style="color: rgba(0, 128, 128, 1)"> 9</span> dummy, bins, dummy = plt.hist(normal_values, int(np.sqrt(N)), density =True, lw=1<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> sigma = 1
+<span style="color: rgba(0, 128, 128, 1)">11</span> mu =<span style="color: rgba(0, 0, 0, 1)"> 0
+</span><span style="color: rgba(0, 128, 128, 1)">12</span> plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) * np.exp( - (bins - mu)**2 / (2 * sigma**2) ),lw=2<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">13</span> plt.show()</pre>
+</div>
+<p>&nbsp;</p>
+<p>　　随机数可以按照正态分布的要求生成，它们的分布情况可以用条形图来显示。如果要绘制正态分布，请执行以下步骤。</p>
+<p>　　（1）生成数值。</p>
+<p>　　借助于NumPy的random子程序包提供的normal()函数，可以创建指定数量的随机数。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> N=10000
+<span style="color: rgba(0, 128, 128, 1)">2</span> 
+<span style="color: rgba(0, 128, 128, 1)">3</span> normal_values = np.random.normal(size=N)</pre>
+</div>
+<p>　　（2）画出条形图和理论上的PDF。</p>
+<p>　　下面使用matplotlib来绘制条形图和理论上的PDF，这里中心值为0，标准差为1。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">dummy, bins, dummy = plt.hist(normal_values, int(np.sqrt(N)), normed =True, lw=1)</span>
+<span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">normed：布尔值。官方不推荐使用，建议改用density参数。</span>
+<span style="color: rgba(0, 128, 128, 1)">3</span> dummy, bins, dummy = plt.hist(normal_values, int(np.sqrt(N)), density =True, lw=1<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">4</span> sigma = 1
+<span style="color: rgba(0, 128, 128, 1)">5</span> mu =<span style="color: rgba(0, 0, 0, 1)"> 0
+</span><span style="color: rgba(0, 128, 128, 1)">6</span> plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) * np.exp( - (bins - mu)**2 / (2 * sigma**2) ),lw=2<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">7</span> plt.show()</pre>
+</div>
+<p>　　图4-3为我们展示了著名的钟形曲线。</p>
+<p>&nbsp;<img title="pythondata2_04_02.png" src="https://images.cnblogs.com/cnblogs_com/downmoon/1683115/o_200404102902pythondata2_04_02.png" alt="邀月工作室" width="389" height="253"></p>
+<p>&nbsp;</p>
+<p><strong>4.4.3　用SciPy进行正态检验</strong></p>
+<p>&nbsp;　　正态分布被广泛用于科学和统计学领域，按照中心极限定理，随着独立观测的随机样本数量的增加，它们会趋向呈正态分布。正态分布的特性已经为大家所熟知，并且它还非常便于使用。不过，它需要满足许多必要条件，例如数据点的数量要足够大，同时还要求这些数据点必须是相互独立的。工作中，我们需要养成检查数据是否符合正态分布的好习惯。正态检验的方法有很多，有一些已经在scipy.stats程序包中实现了。本节将用到这些检验方法，样本是取自Google网站的流感趋势数据。这里我们对原始文件进行了简化处理，只留下日期和来自阿根廷的数据两列，下面给出示例行。</p>
+<p><img title="pythondata2_04_03.png" src="https://images.cnblogs.com/cnblogs_com/downmoon/1683115/o_200404103217pythondata2_04_03.png" alt="邀月工作室" width="229" height="388"></p>
+<p>　　这些数据可以在本书代码包中的goog_flutrends.csv文件中找到，和前面一样，这里我们也按照正态分布对这些数据进行抽样。得到数组的大小与流感趋势数组相同，如果顺利通过正态检验，就以它为金标准（the golden standard）。这里的代码取自代码包中的ch-04.ipynb文件。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">from</span> scipy.stats <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> shapiro
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> <span style="color: rgba(0, 0, 255, 1)">from</span> scipy.stats <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> anderson
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> <span style="color: rgba(0, 0, 255, 1)">from</span> scipy.stats <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> normaltest
+</span><span style="color: rgba(0, 128, 128, 1)"> 5</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 6</span> flutrends = np.loadtxt(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">goog_flutrends.csv</span><span style="color: rgba(128, 0, 0, 1)">"</span>, delimiter=<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">,</span><span style="color: rgba(128, 0, 0, 1)">'</span>, usecols=(1,), skiprows=1, converters = {1: <span style="color: rgba(0, 0, 255, 1)">lambda</span> s: float(s <span style="color: rgba(0, 0, 255, 1)">or</span> 0)}, unpack=<span style="color: rgba(0, 0, 0, 1)">True)
+</span><span style="color: rgba(0, 128, 128, 1)"> 7</span> N =<span style="color: rgba(0, 0, 0, 1)"> len(flutrends)
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span> normal_values = np.random.normal(size=<span style="color: rgba(0, 0, 0, 1)">N)
+</span><span style="color: rgba(0, 128, 128, 1)"> 9</span> zero_values =<span style="color: rgba(0, 0, 0, 1)"> np.zeros(N)
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> 
+<span style="color: rgba(0, 128, 128, 1)">11</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Normal Values Shapiro</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, shapiro(normal_values))
+</span><span style="color: rgba(0, 128, 128, 1)">12</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">print("Zeroes Shapiro", shapiro(zero_values))</span>
+<span style="color: rgba(0, 128, 128, 1)">13</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Flu Shapiro</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, shapiro(flutrends))
+</span><span style="color: rgba(0, 128, 128, 1)">14</span> 
+<span style="color: rgba(0, 128, 128, 1)">15</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Normal Values Anderson</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, anderson(normal_values))
+</span><span style="color: rgba(0, 128, 128, 1)">16</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">print("Zeroes Anderson", anderson(zero_values))</span>
+<span style="color: rgba(0, 128, 128, 1)">17</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Flu Anderson</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, anderson(flutrends))
+</span><span style="color: rgba(0, 128, 128, 1)">18</span> 
+<span style="color: rgba(0, 128, 128, 1)">19</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Normal Values normaltest</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">, normaltest(normal_values))
+</span><span style="color: rgba(0, 128, 128, 1)">20</span> <span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">print("Zeroes normaltest", normaltest(zero_values))</span>
+<span style="color: rgba(0, 128, 128, 1)">21</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Flu normaltest</span><span style="color: rgba(128, 0, 0, 1)">"</span>, normaltest(flutrends))</pre>
+</div>
+<p>　　作为一个反面例子，下面使用的这个数组跟前面提到的填满零的数组具有同样的大小。实际上，当处理一些小概率事件（如世界性疫情的爆发）时，就可能遇到这种数据。</p>
+<p>在这个数据文件中，一些单元是空的。当然，这种问题经常会碰到，所以我们必须习惯于首先清洗数据。我们假定正确的数值是零，下面使用一个转换器来填上这些零值。</p>
+<p><span style="color: rgba(255, 0, 0, 1)">见上述代码第6行</span></p>
+<p>　　夏皮罗-威尔克检验法可以对正态性进行检验。相应的SciPy函数将返回一个元组，其中第1个元素是一个检验统计量，第2个数值是p值。需要注意的是，这种填满了零的数组会引发警告。事实上，本例中用到的3个函数在处理这个数组方面确实有困难，同时还会引发警告。下面是得到的结果。</p>
+<div class="cnblogs_code">
+<pre>Normal Values Shapiro (0.9963182806968689, 0.18643833696842194<span style="color: rgba(0, 0, 0, 1)">)
+Flu Shapiro (</span>0.9351990818977356, 2.2945883254311397e-15)</pre>
+</div>
+<p>　　这里得到的p值类似于本例中后面的第3个检验的结果。分析结果基本上是一样的。</p>
+<p>　　Anderson-Darling检验可以用来检验正态分布以及其他分布，如指数分布、对数分布和冈贝尔（Gumbel）分布等。相关的SciPy函数涉及一个检验统计量和一个数组，该数组存放了15、10、5、2.5和1等百分值所对应的临界值。如果该统计量大于显著性水平的临界值，我们就可以断定它不具有正态性。我们将得到下列数值。</p>
+<div class="cnblogs_code">
+<pre>Normal Values Anderson AndersonResult(statistic=0.5299815280259281, critical_values=array([0.572, 0.652, 0.782, 0.912, 1.085]), significance_level=array([15. , 10. ,  5. ,  2.5,  1<span style="color: rgba(0, 0, 0, 1)">. ]))
+Flu Anderson AndersonResult(statistic</span>=8.258614154768793, critical_values=array([0.572, 0.652, 0.782, 0.912, 1.085]), significance_level=array([15. , 10. ,  5. ,  2.5,  1<span style="color: rgba(0, 0, 0, 1)">. ]))
+</span></pre>
+</div>
+<p>　　对于这种用零填充的数组，我们没有什么好说的，因为返回的统计量根本就不是一个数值。就像我们期望的那样，这个金标准数组是符合正态分布的。然而，流感趋势数据返回的这个统计量大于所有的有关临界值，因此我们可以肯定它不符合正态分布。这3个测试函数中，这个看起来是最容易使用的一个。</p>
+<p>　　SciPy的normaltest()函数还实现了D’Agostino检验和Pearson检验功能。该函数返回的元组和shapiro()函数一样，也包括一个统计量和p值。这里的p值是双边卡方概率（two-sided Chi-squared probability），卡方分布是另一种著名的分布，这种检验本身基于偏度和峰度检验的z分数。偏度系数用来表示分布的对称程度。因为正态分布是对称的，所以偏度系数为零。峰度系数描述的是分布的形状（尖峰、肥尾）。这种正态分布的峰度系数为3，超额峰度的系数为0。以下是本次检验获得的数值。</p>
+<div class="cnblogs_code">
+<pre>Normal Values normaltest NormaltestResult(statistic=3.8850841487225543, pvalue=0.14333910757583423<span style="color: rgba(0, 0, 0, 1)">)
+Flu normaltest NormaltestResult(statistic</span>=99.64373336356954, pvalue=2.304826411536872e-22)</pre>
+</div>
+<p>　　因为这里处理的是p值的概率，所以它越大越好，最好接近1。对于这种用零填充的数组，会得到很奇怪的结果。不过，因为我们已经得到提示，所以对于这个特殊数组来说，结果是不可信的。此外，如果p值大于等于0.5，我们则认为它具有正态性。对于金标准数组，我们会得到一个更小的数值，这说明我们需要进行更多的观察。这一点作为作业，请读者自行练习。</p>
+<p>&nbsp;</p>
+<p><strong>4.5创建掩码式NumPy数组</strong></p>
+<p>&nbsp;　　数据常常是凌乱的，而且含有空白项或者无法处理的字符，好在掩码式数组可以忽略残缺的或无效的数据点。Numpy.ma子程序包提供的掩码式数组隶属于ndarray，带有一个掩码。本节我们以Lena Soderberg的相片为数据源，而且假设某些数据已被破坏。下面是处理掩码式数组的完整代码，取自本书代码包中的ch – 04.ipynb文件。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> scipy
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> matplotlib.pyplot as plt
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 5</span> face =<span style="color: rgba(0, 0, 0, 1)"> scipy.misc.face()
+</span><span style="color: rgba(0, 128, 128, 1)"> 6</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 7</span> random_mask = numpy.random.randint(0, 2, size=<span style="color: rgba(0, 0, 0, 1)">face.shape)
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 9</span> plt.subplot(221<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">10</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Original</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">11</span> <span style="color: rgba(0, 0, 0, 1)">plt.imshow(face)
+</span><span style="color: rgba(0, 128, 128, 1)">12</span> plt.axis(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">off</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">13</span> 
+<span style="color: rgba(0, 128, 128, 1)">14</span> masked_array = numpy.ma.array(face, mask=<span style="color: rgba(0, 0, 0, 1)">random_mask)
+</span><span style="color: rgba(0, 128, 128, 1)">15</span> 
+<span style="color: rgba(0, 128, 128, 1)">16</span> plt.subplot(222<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">17</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Masked</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">18</span> <span style="color: rgba(0, 0, 0, 1)">plt.imshow(masked_array)
+</span><span style="color: rgba(0, 128, 128, 1)">19</span> plt.axis(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">off</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">20</span> 
+<span style="color: rgba(0, 128, 128, 1)">21</span> plt.subplot(223<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">22</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Log</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">23</span> plt.imshow(numpy.ma.log(face).astype(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">float32</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">))
+</span><span style="color: rgba(0, 128, 128, 1)">24</span> plt.axis(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">off</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">25</span> 
+<span style="color: rgba(0, 128, 128, 1)">26</span> 
+<span style="color: rgba(0, 128, 128, 1)">27</span> plt.subplot(224<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">28</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Log Masked</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">29</span> plt.imshow(numpy.ma.log(masked_array).astype(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">float32</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">))
+</span><span style="color: rgba(0, 128, 128, 1)">30</span> plt.axis(<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">off</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">31</span> 
+<span style="color: rgba(0, 128, 128, 1)">32</span> plt.show()</pre>
+</div>
+<p>　　最后，我们来展示原图、原图的对数值、掩码式数组及其对数值。</p>
+<p>　　（1）创建一个掩码。</p>
+<p>　　为了得到一个掩码式数组，必须规定一个掩码。下面将生成一个随机掩码，这个掩码的取值非0即1。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> Random_mask = numpy.random.randint(0, 2, size=face.shape)</pre>
+</div>
+<p>　　（2）创建一个掩码式数组。</p>
+<p>　　下面应用该掩码来创建一个掩码式数组。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> Masked_array = numpy.ma.array(face, mask=random_mask)</pre>
+</div>
+<p>　　我们得到的图4-4。</p>
+<p><img title="pythondata2_04_04.png" src="https://images.cnblogs.com/cnblogs_com/downmoon/1683115/o_200404104052pythondata2_04_04.png" alt="邀月工作室" width="784" height="234"></p>
+<p>　　我们给NumPy数组附加了一个随机掩码，这样，与该掩码相对应的数据就会被忽略不计。Numpy.ma子程序包为处理掩码式数组提供了各种所需的函数，这里我们只介绍如何生成掩码式数组。</p>
+<p><strong>4.6忽略负值和极值</strong></p>
+<p>&nbsp;　　当希望忽略负值，例如对数组的值取对数时，掩码式数组将会非常有用；此外，剔除异常值时，我们也会用到掩码式数组。这项工作是以极值的上下限为基础的。下面我们以来源于美国职业棒球大联盟（MLB）选手的薪金数据为例，来说明这些技术的应用方法。经过编辑，这份数据仅保留了选手姓名和薪金两栏，结果放在MLB2008.csv文件中，读者可以从本书代码包中找到。</p>
+<p>　　至于完整的脚本，请参见本书代码包中的ch-04.ipynb文件。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> numpy as np
+</span><span style="color: rgba(0, 128, 128, 1)"> 2</span> <span style="color: rgba(0, 0, 255, 1)">from</span> datetime <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> date
+</span><span style="color: rgba(0, 128, 128, 1)"> 3</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> sys
+</span><span style="color: rgba(0, 128, 128, 1)"> 4</span> <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> matplotlib.pyplot as plt
+</span><span style="color: rgba(0, 128, 128, 1)"> 5</span> 
+<span style="color: rgba(0, 128, 128, 1)"> 6</span> salary = np.loadtxt(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">MLB2008.csv</span><span style="color: rgba(128, 0, 0, 1)">"</span>, delimiter=<span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">,</span><span style="color: rgba(128, 0, 0, 1)">'</span>, usecols=(1,), skiprows=1, unpack=<span style="color: rgba(0, 0, 0, 1)">True)
+</span><span style="color: rgba(0, 128, 128, 1)"> 7</span> triples = np.arange(0, len(salary), 3<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)"> 8</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Triples</span><span style="color: rgba(128, 0, 0, 1)">"</span>, triples[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)"> 9</span> 
+<span style="color: rgba(0, 128, 128, 1)">10</span> signs =<span style="color: rgba(0, 0, 0, 1)"> np.ones(len(salary))
+</span><span style="color: rgba(0, 128, 128, 1)">11</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Signs</span><span style="color: rgba(128, 0, 0, 1)">"</span>, signs[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">12</span> 
+<span style="color: rgba(0, 128, 128, 1)">13</span> signs[triples] = -1
+<span style="color: rgba(0, 128, 128, 1)">14</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Signs</span><span style="color: rgba(128, 0, 0, 1)">"</span>, signs[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">15</span> 
+<span style="color: rgba(0, 128, 128, 1)">16</span> ma_log = np.ma.log(salary *<span style="color: rgba(0, 0, 0, 1)"> signs)
+</span><span style="color: rgba(0, 128, 128, 1)">17</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Masked logs</span><span style="color: rgba(128, 0, 0, 1)">"</span>, ma_log[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">18</span> 
+<span style="color: rgba(0, 128, 128, 1)">19</span> dev =<span style="color: rgba(0, 0, 0, 1)"> salary.std()
+</span><span style="color: rgba(0, 128, 128, 1)">20</span> avg =<span style="color: rgba(0, 0, 0, 1)"> salary.mean()
+</span><span style="color: rgba(0, 128, 128, 1)">21</span> inside = np.ma.masked_outside(salary, avg - dev, avg +<span style="color: rgba(0, 0, 0, 1)"> dev)
+</span><span style="color: rgba(0, 128, 128, 1)">22</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Inside</span><span style="color: rgba(128, 0, 0, 1)">"</span>, inside[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">23</span> 
+<span style="color: rgba(0, 128, 128, 1)">24</span> plt.subplot(311<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">25</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Original</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">26</span> <span style="color: rgba(0, 0, 0, 1)">plt.plot(salary)
+</span><span style="color: rgba(0, 128, 128, 1)">27</span> 
+<span style="color: rgba(0, 128, 128, 1)">28</span> plt.subplot(312<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">29</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Log Masked</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">30</span> <span style="color: rgba(0, 0, 0, 1)">plt.plot(np.exp(ma_log))
+</span><span style="color: rgba(0, 128, 128, 1)">31</span> 
+<span style="color: rgba(0, 128, 128, 1)">32</span> plt.subplot(313<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">33</span> plt.title(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Not Extreme</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">34</span> <span style="color: rgba(0, 0, 0, 1)">plt.plot(inside)
+</span><span style="color: rgba(0, 128, 128, 1)">35</span> 
+<span style="color: rgba(0, 128, 128, 1)">36</span> plt.subplots_adjust(hspace=.9<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">37</span> 
+<span style="color: rgba(0, 128, 128, 1)">38</span> plt.show()</pre>
+</div>
+<p>　　以下是对上述命令的说明。</p>
+<p>　　（1）对负数取对数</p>
+<p>　　我们可以对含有负数的数组取对数。首先创建一个数组，存放可以被3整除的数组。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> triples = np.arange(0, len(salary), 3<span style="color: rgba(0, 0, 0, 1)">)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Triples</span><span style="color: rgba(128, 0, 0, 1)">"</span>, triples[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span>)</pre>
+</div>
+<p>　　然后生成一个元素值全为1且大小与薪金数据数组相等的数组。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> signs =<span style="color: rgba(0, 0, 0, 1)"> np.ones(len(salary))
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Signs</span><span style="color: rgba(128, 0, 0, 1)">"</span>, signs[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span>)</pre>
+</div>
+<p>　　借助于第2章中学到的技巧，可以将下标是3的倍数的数组元素的值取反。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> signs[triples] = -1
+<span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Signs</span><span style="color: rgba(128, 0, 0, 1)">"</span>, signs[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span>)</pre>
+</div>
+<p>　　最终就可以对这个数组取对数了。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> ma_log = np.ma.log(salary *<span style="color: rgba(0, 0, 0, 1)"> signs)
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Masked logs</span><span style="color: rgba(128, 0, 0, 1)">"</span>, ma_log[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span>)</pre>
+</div>
+<p>　　下面显示相应的薪金数据（注意，这里有一些数据的值为NaN）。</p>
+<div class="cnblogs_code">
+<pre>Triples [ 0  3  6  9 12 15 18 21 24 27<span style="color: rgba(0, 0, 0, 1)">] ...
+Signs [</span>1. 1. 1. 1. 1. 1. 1. 1. 1. 1<span style="color: rgba(0, 0, 0, 1)">.] ...
+Signs [</span>-1.  1.  1. -1.  1.  1. -1.  1.  1. -1<span style="color: rgba(0, 0, 0, 1)">.] ...
+Masked logs [</span>-- 14.970818190308929 15.830413578506539 -- 13.458835614025542
+ 15.319587954740548 -- 15.648092021712584 13.864300722133706 --<span style="color: rgba(0, 0, 0, 1)">] ...
+</span></pre>
+</div>
+<p>　　（2）忽略极值</p>
+<p>　　此处规定：所谓异常值，就是在平均值一个标准差以下或者在平均值一个标准差以上的那些数值（这个定义未必恰当，只是为了便于计算）。根据上面的定义，可以利用下面的代码来屏蔽极值点。</p>
+<div class="cnblogs_code">
+<pre><span style="color: rgba(0, 128, 128, 1)">1</span> dev =<span style="color: rgba(0, 0, 0, 1)"> salary.std()
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> avg =<span style="color: rgba(0, 0, 0, 1)"> salary.mean()
+</span><span style="color: rgba(0, 128, 128, 1)">3</span> inside = np.ma.masked_outside(salary, avg - dev, avg +<span style="color: rgba(0, 0, 0, 1)"> dev)
+</span><span style="color: rgba(0, 128, 128, 1)">4</span> <span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Inside</span><span style="color: rgba(128, 0, 0, 1)">"</span>, inside[:10], <span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">...</span><span style="color: rgba(128, 0, 0, 1)">"</span>)</pre>
+</div>
+<p>　　以下代码将显示前10个元素。</p>
+<div class="cnblogs_code">
+<pre>Inside [3750000.0 3175000.0 7500000.0 3000000.0 700000.0 4500000.0 3000000.0
+ 6250000.0 1050000.0 4600000.0] ...</pre>
+</div>
+<p>　　下面分别绘制原始薪金数据、取对数后的数据和取幂复原后的数据，最后是应用基于标准差的掩码之后的数据。</p>
+<p>　　具体如图4-5所示。</p>
+<p>&nbsp;<img title="pythondata2_04_05.png" src="https://images.cnblogs.com/cnblogs_com/downmoon/1683115/o_200404104634pythondata2_04_05.png" alt="邀月工作室" width="413" height="286"></p>
+<p>Numpy.ma子程序包中的函数可以屏蔽数组中被视为无效的元素，例如无法应用log()和sqrt()函数的负值元素。被屏蔽的值类似于关系数据库和程序设计中的NULL值，对被屏蔽的值进行运算时，给它的都是一个屏蔽后的值。</p>
+<p>&nbsp;</p>
+<p><strong>&nbsp;4.7小结</strong></p>
+<p>&nbsp;　　本章我们学习了多种NumPy和SciPy子库，回顾了线性代数、统计学、连续和离散分布、掩码式数组和随机数方面的内容。</p>
+<p>　　第5章将介绍更多的技巧，尽管有人可能认为那些工作不算是数据分析。实际上，凡是能够与数据分析扯上关系的东西，我们都需要关注。通常，我们进行数据分析时，并不是在人员配备齐全的团队中工作，所以没人来替我们检索和存储数据。但是，如果要想顺畅地完成数据分析流程，这些工作又是不可或缺的，所以第5章会对这些工作进行详尽的说明。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span class="postTitle2">第4章完。</span></p>
+<p><a class="postTitle2" href="https://www.cnblogs.com/downmoon/p/12448602.html">python数据分析个人学习读书笔记-目录索引 </a></p>
+<p>&nbsp;</p>
+<p><span class="postTitle2">随书源码官方下载：<br><a href="https://www.ptpress.com.cn/shopping/buy?bookId=bae24ecb-a1a1-41c7-be7c-d913b163c111" target="_blank">https://www.ptpress.com.cn/shopping/buy?bookId=bae24ecb-a1a1-41c7-be7c-d913b163c111</a></span></p>
+<p><span class="postTitle2">需要登录后免费下载。</span></p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2020-04-04 18:47</span>&nbsp;
+<a href="https://www.cnblogs.com/downmoon/">邀月</a>&nbsp;
+阅读(<span id="post_view_count">115</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12632739" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(12632739);return false;">收藏</a></div>
+        </div>
+<script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 22045, cb_blogApp = 'downmoon', cb_blogUserGuid = '5c62360b-63cf-dd11-9e4d-001cf0cd104b';
+    var cb_entryId = 12632739, cb_entryCreatedDate = '2020-04-04 18:47', cb_postType = 1;
+    loadViewCount(cb_entryId);
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_news"></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_kb"></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+        deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverT2();
+        deliverC1C2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>    </div>
+</div>
+            </div>
+        </div>
+
+        <div id="sideBar">
+            <div id="sideBarMain">
+                
+<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+
+<div id="sidebar_ad"></div>
+                <div id="calendar"><div id="blog-calendar" style="display:none"></div></div>                
+                <script>loadBlogDefaultCalendar();</script>
+                <div id="leftcontentcontainer">
+                    <!-- begin:SingleColumn -->
+                    <div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+                    <!-- end:  SingleColumn -->
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="footer">
+        <!--done-->
+Copyright &copy; 2020 邀月
+<br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+    </div>
+</div>
+
+    
+</body>
+</html>
