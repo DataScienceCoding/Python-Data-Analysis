@@ -1,14 +1,14 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import numpy.ma as ma
+# import matplotlib.pyplot as plt
+# import numpy as np
+# import numpy.ma as ma
 
-data = np.random.rand(25 * 25).reshape(25, -1)
-mask = np.tri(data.shape[0], k=-1)
-data_masked = ma.array(data, mask=mask)
-fig, (ax1, ax2) = plt.subplots(1, 2)
-ax1.imshow(data)
-ax2.imshow(data_masked)
-plt.show()
+# data = np.random.rand(25 * 25).reshape(25, -1)
+# mask = np.tri(data.shape[0], k=-1)
+# data_masked = ma.array(data, mask=mask)
+# fig, (ax1, ax2) = plt.subplots(1, 2)
+# ax1.imshow(data)
+# ax2.imshow(data_masked)
+# plt.show()
 
 
 # import numpy as np
@@ -127,29 +127,29 @@ plt.show()
 # plt.show()
 
 
-# import numpy as np
-# from matplotlib import pyplot as plt
-# from matplotlib.pyplot import plot, show
+import numpy as np
+from matplotlib import pyplot as plt
+from matplotlib.pyplot import plot, show
 
-# score = np.zeros(10000)
-# score[0] = 1000
-# result = np.random.binomial(9, 0.5, size=len(score))
+score = np.zeros(10000)
+score[0] = 1000
+result = np.random.binomial(9, 0.5, size=len(score))
 
-# for i in range(1, len(score)):
-#     if result[i] < 5:
-#         score[i] = score[i - 1] - 1
-#     elif result[i] < 10:
-#         score[i] = score[i - 1] + 1
-#     else:
-#         raise AssertionError("Unexpected grade " + score)
+for i in range(1, len(score)):
+    if result[i] < 5:
+        score[i] = score[i - 1] - 1
+    elif result[i] < 10:
+        score[i] = score[i - 1] + 1
+    else:
+        raise AssertionError("Unexpected grade " + score)
 
-# plt.rcParams['font.sans-serif'] = ['SimHei']
-# plt.rcParams['axes.unicode_minus'] = False
-# plt.title("模拟10000次抛九枚硬币的试验")
-# plt.xlabel("试验次数")
-# plt.ylabel("获得分数")
-# plot(np.arange(len(score)), score)
-# show()
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+plt.title("模拟10000次抛九枚硬币的试验")
+plt.xlabel("试验次数")
+plt.ylabel("获得分数")
+plot(np.arange(len(score)), score)
+show()
 
 
 # A = np.mat("3 -2; 1 0")
