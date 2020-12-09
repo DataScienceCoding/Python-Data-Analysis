@@ -1,6 +1,7 @@
 # 乳腺癌诊断分类
 
 # 1. 引入项目要用到的程序类库
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -10,7 +11,7 @@ from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 
 # 2. 加载数据集
-data = pd.read_csv("code/data.csv")
+data = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'data.csv')))
 
 # 3. 探索性数据分析
 pd.set_option('display.max_columns', None)
@@ -86,8 +87,8 @@ print('准确率: ', metrics.accuracy_score(prediction, test_y))
 #     PrettyPrinter().pprint(clf.cv_results_)
 
 
-# rain = np.load('code/rain.npy')
-# dates = np.load('code/doy.npy')
+# rain = np.load(os.path.abspath(os.path.join(os.path.dirname(__file__), 'rain.npy')))
+# dates = np.load(os.path.abspath(os.path.join(os.path.dirname(__file__), 'doy.npy')))
 
 # x = np.vstack((dates[:-1], rain[:-1]))
 # y = np.sign(rain[1:])
@@ -119,8 +120,8 @@ print('准确率: ', metrics.accuracy_score(prediction, test_y))
 #     print("{}逻辑回归平均准确率: {}".format(title, np.mean(scores)))
 
 
-# rain = np.load('code/rain.npy')
-# dates = np.load('code/doy.npy')
+# rain = np.load(os.path.abspath(os.path.join(os.path.dirname(__file__), 'rain.npy')))
+# dates = np.load(os.path.abspath(os.path.join(os.path.dirname(__file__), 'doy.npy')))
 
 # x = np.vstack((dates[:-1], rain[:-1]))
 # y = np.sign(rain[1:])
@@ -135,7 +136,7 @@ print('准确率: ', metrics.accuracy_score(prediction, test_y))
 # from sklearn import preprocessing
 # from scipy.stats import anderson
 
-# rain = np.load('code/rain.npy')
+# rain = np.load(os.path.abspath(os.path.join(os.path.dirname(__file__), 'rain.npy')))
 # rain = .1 * rain
 # rain[rain < 0] = .05/2
 # print("Rain 期望值: ", rain.mean())

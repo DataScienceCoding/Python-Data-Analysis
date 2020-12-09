@@ -14,7 +14,7 @@
 # import numpy as np
 # import matplotlib.pyplot as plt
 
-# salary = np.loadtxt("code/MLB2008.csv", delimiter=',',
+# salary = np.loadtxt(os.path.abspath(os.path.join(os.path.dirname(__file__), 'MLB2008.csv')), delimiter=',',
 #                     usecols=(1,), skiprows=1, unpack=True)
 
 # # 创建一个数组，存放可以被3整除的数组
@@ -94,7 +94,7 @@
 # from scipy.stats import anderson
 # from scipy.stats import normaltest
 
-# flutrends = np.loadtxt("code/goog_flutrends.csv", delimiter=',', usecols=(1, ),
+# flutrends = np.loadtxt(os.path.abspath(os.path.join(os.path.dirname(__file__), 'goog_flutrends.csv')), delimiter=',', usecols=(1, ),
 #                        skiprows=1, converters={1: lambda s: float(s or 0)}, unpack=True)
 # N = len(flutrends)
 # normal_values = np.random.normal(size=N)
@@ -201,7 +201,7 @@ show()
 # from scipy.stats import scoreatpercentile
 # import pandas as pd
 
-# data = pd.read_csv("code/co2.csv", index_col=0, parse_dates=True)
+# data = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'co2.csv')), index_col=0, parse_dates=True)
 
 # co2 = np.array(data.co2)
 

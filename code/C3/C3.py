@@ -192,23 +192,23 @@ print(df.iloc[2]['one'])
 #     sunspots['Yearly Mean Total Sunspot Number']), '\n')
 
 # print('当前程序执行目录: ', os.getcwd())
-# df = pd.read_csv("code/temp.csv")
+# df = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'temp.csv')))
 # print(df, '\n')
 
 # print('# 自定义索引')
-# df = pd.read_csv("code/temp.csv", index_col=['S.No'])
+# df = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'temp.csv')), index_col=['S.No'])
 # print(df, '\n')
 
 # print('# 转换器')
-# df = pd.read_csv("code/temp.csv", dtype={'Salary': np.float64})
+# df = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'temp.csv')), dtype={'Salary': np.float64})
 # print(df.dtypes, '\n')
 
 # print('# 使用names参数指定标题(同时需要使用header参数来删除原有标题)')
-# df = pd.read_csv("code/temp.csv", names=['a', 'b', 'c', 'd', 'e'], header=0)
+# df = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'temp.csv')), names=['a', 'b', 'c', 'd', 'e'], header=0)
 # print(df, '\n')
 
 # print('# 跳过指定行')
-# df = pd.read_csv("code/temp.csv", skiprows=2)
+# df = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'temp.csv')), skiprows=2)
 # print(df, '\n')
 
 

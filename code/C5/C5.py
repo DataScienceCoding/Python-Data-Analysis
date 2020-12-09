@@ -460,7 +460,7 @@ plt.show()
 # ax.spines['left'].set_position(('data', 0))
 
 # 以分辨率 72 来保存图片
-# savefig("code/result.png", dpi=72)
+# savefig(os.path.abspath(os.path.join(os.path.dirname(__file__), 'result.png')), dpi=72)
 
 
 # 在屏幕上显示
@@ -484,7 +484,7 @@ plt.show()
 # import numpy as np
 
 # SourceHan = matplotlib.font_manager.FontProperties(
-#     fname="code/SourceHanSansSC-Bold.otf")
+#     fname=os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, 'SourceHanSansSC-Bold.otf')))
 
 # x = np.arange(1, 11)
 # y = 2 * x + 5

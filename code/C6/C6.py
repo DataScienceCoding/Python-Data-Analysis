@@ -135,12 +135,12 @@ print("{} > New Series\n".format(data.to_json()))
 # np.random.seed(42)
 # a = np.random.randn(365, 4)
 
-# tmp = 'code/savetext.csv'
+# tmp = os.path.abspath(os.path.join(os.path.dirname(__file__), 'savetext.csv'))
 # # tmp = NamedTemporaryFile()  # 可能会报PermissionError
 # np.savetxt(tmp, a, delimiter=',')
 # print("使用savetxt函数的CSV文件大小: ", getsize(tmp))
 
-# tmp = 'code/save'
+# tmp = os.path.abspath(os.path.join(os.path.dirname(__file__), 'save'))
 # np.save(tmp, a)
 # tmp = '{}.npy'.format(tmp)
 # loaded = np.load(tmp)
@@ -148,7 +148,7 @@ print("{} > New Series\n".format(data.to_json()))
 # print("使用save函数的npy文件大小: ", getsize(tmp))
 
 # df = pd.DataFrame(a)
-# tmp = 'code/pickle'
+# tmp = os.path.abspath(os.path.join(os.path.dirname(__file__), 'pickle'))
 # df.to_pickle(tmp)
 # print("使用to_pickle函数的npy文件大小: ", getsize(tmp))
 # print("DF from pickle: \n", pd.read_pickle(tmp))
@@ -161,7 +161,7 @@ print("{} > New Series\n".format(data.to_json()))
 # a = np.random.randn(3, 4)
 # a[2][2] = np.nan
 # print(a)
-# np.savetxt('code/np.csv', a, fmt='%.2f', delimiter=',', header=" #1, #2,  #3,  #4")
+# np.savetxt(os.path.abspath(os.path.join(os.path.dirname(__file__), 'np.csv')), a, fmt='%.2f', delimiter=',', header=" #1, #2,  #3,  #4")
 # df = pd.DataFrame(a)
 # print(df)
-# df.to_csv('code/pd.csv', float_format='%.2f', na_rep="NAN!")
+# df.to_csv(os.path.abspath(os.path.join(os.path.dirname(__file__), 'pd.csv')), float_format='%.2f', na_rep="NAN!")
